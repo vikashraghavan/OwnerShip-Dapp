@@ -24,11 +24,7 @@ class Login extends Component {
       </Card>
       <Card className="shadow-lg mt-3 mb-3 border-0 rounded" border="0">
       <Card.Body style={{ height:'30vh', width:'40vw'}}>
-      <Form onSubmit={async (event) => {
-          event.preventDefault(); await this.login(this.username.value, this.password.value).then(this.props.history.push("/"));
-        }}
-        action="/
-      >
+      <Form onSubmit={async (event) => { event.preventDefault(); await this.login(this.username.value, this.password.value).then(this.props.history.push("/"));}}>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>
         <Form.Control ref={(input) => {this.username = input}} type="text" />
