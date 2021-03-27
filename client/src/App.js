@@ -25,6 +25,7 @@ class App extends Component {
     this.state = {
 
       accounts: null,
+      show:false,
       creatorProfile: null,
       username: null,
       web3: null,
@@ -47,6 +48,7 @@ class App extends Component {
 
     }
 
+    this.child = React.createRef();
     this.loadStorage = this.loadStorage.bind(this);
     this.stopLoading = this.stopLoading.bind(this);
     this.loadContract = this.loadContract.bind(this);
@@ -266,14 +268,18 @@ class App extends Component {
 
       await this.setState({ creatorProfile: creatorProfile });
       await this.loadCreatorProfile();
-      console.log(this.props.history);
-      await this.setState({ loading: false });
+      await this.setState({ loading: true, show: false });
+      var promise = new Promise(function(resolve, reject) {
+        resolve(true);
+      });
+      return promise;
 
     } catch(error) {
-      this.setState({ loading: false });
-      alert(
-        `Check your credentials`,
-      );
+      this.setState({ loading: true, show: true });
+      var promise = new Promise(function(resolve, reject) {
+        resolve(false);
+      });
+      return promise;
     }
   };
 
@@ -455,7 +461,7 @@ class App extends Component {
               />
         )}/>
         <Route path = "/register" exact render={props => <Register createUser = {this.createUser}  />} />
-        <Route path = "/login" exact render={props => <Login loadUser = {this.loadUser} stopLoading={this.stopLoading}  />} />
+        <Route path = "/login" exact render={({props, history}) => <Login history={history} show={this.state.show} loadUser = {this.loadUser} stopLoading={this.stopLoading}  />} />
         <Route path = "/addContent" exact render={props => <AddContent
           captureFile = {this.captureFile}
           updateContract = {this.updateContract} />}

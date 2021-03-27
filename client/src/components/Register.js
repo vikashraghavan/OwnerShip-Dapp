@@ -1,9 +1,29 @@
 import React, { Component } from "react";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button, Form, Alert } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Register extends Component {
+
+  constructor(props) {
+
+    super(props)
+
+    this.state = { rshow: false }
+    this.makeRegister = this.makeRegister.bind(this);
+
+  }
+
+  makeRegister = async (username, password, confirmpassword) => {
+
+    if (password === confirmpassword) {
+        this.props.createUser(username, password).then(await this.props.history.push('/'));
+    } else {
+      this.setState({ rshow: true });
+      console.log('tst');
+    }
+
+  };
 
   render() {
     return (
@@ -15,9 +35,9 @@ class Register extends Component {
       </Card>
       <Card className="shadow-lg mt-3 mb-3 border-0 rounded" border="0">
       <Card.Body style={{ height:'40vh', width:'40vw'}}>
-      <Form onSubmit={async (event) => {
-        event.preventDefault();
-        await this.props.createUser(this.username.value, this.password.value).then(await this.props.history.push('/'));}}
+      <Form onSubmit={async () => {
+        
+        await this.makeRegister(this.username.value, this.password.value, this.confirmpassword.value);}}
       >
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>
@@ -38,6 +58,9 @@ class Register extends Component {
       </Form>
       </Card.Body>
       </Card>
+      <Alert show={this.state.rshow} variant="danger">
+        Password mismatch!
+      </Alert>
       </div>
     );
   }
