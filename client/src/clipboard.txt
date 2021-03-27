@@ -1,0 +1,17 @@
+const index = this.props.match.params.id;
+this.setState({ content: this.props.allContent[index-1] });
+return (
+  <div >
+  <Card style={{ height:'9%'}} className="mb-3 border-0">
+    <Card.Body  style={{ 'padding':'2.25vh'}}>
+
+      <Card.Title className="d-inline-block " style={{ 'fontSize':'3vh', 'marginRight':'0%', 'marginBottom':'0%'}} >{this.state.content.title}</Card.Title>
+      <Link style={{ 'textDecoration':'none', 'color': 'black'}} to="/addContent">
+      <Card.Subtitle className="d-inline-block float-right margin-top" style={{ 'fontSize':'2vh'}}  >Add Content</Card.Subtitle>
+      </Link>
+      <Link style={{ 'textDecoration':'none', 'color': 'black'}} to="/profile">
+      <Card.Subtitle className="d-inline-block float-right margin-top" style={{ 'fontSize':'2vh', 'marginRight': '3vmin'}}  >Profile</Card.Subtitle>
+      </Link>
+    </Card.Body>
+  </Card>
+  </div>
