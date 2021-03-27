@@ -1,1 +1,1 @@
-# IPMS
+# IPMS (Intellectual Property Management) Dapp
