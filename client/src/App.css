@@ -66,3 +66,55 @@ textarea {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     transform:scale(1.01);
 }
+
+.custom-tab2 {
+  display: none !important;
+}
+
+
+@media screen and (max-width: 450px) {
+  #contentcard .custom-description {
+    display: none;
+  }
+
+  #content{
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  #login{
+    width: 75%;
+  }
+
+  #custom-login {
+    width:100%!important;
+  }
+
+  #register{
+    width: 75%;
+  }
+
+  #custom-register {
+    width:100%!important;
+  }
+
+  #title {
+    width:100% !important;
+  }
+
+  #title .h5 {
+    font-size: 2.3vh !important;
+  }
+
+  #cardNav {
+    width:100% !important;
+    height: 87%!important;
+  }
+
+  .custom-tab1 {
+    display: none!important;
+  }
+
+  .custom-tab2 {
+    display: contents!important;
+  }
+}

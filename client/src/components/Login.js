@@ -22,14 +22,14 @@ const Login = ({history, loadUser, stopLoading, show}) => {
 
 
     return (
-      <div style={{ backgroundColor: '#ACC8E5' ,position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}} >
+      <div id="login" style={{ backgroundColor: '#ACC8E5' ,position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}} >
       <Card id="title" style={{  width:'100%'}} border="dark" className="shadow-lg mt-3 mb-3 border-0 rounded">
-        <Card.Body style={{ 'padding':'2.25vh'}}>
+        <Card.Body style={{'padding':'2.25vh'}}>
           <Card.Title className="my-0" > Login </Card.Title>
         </Card.Body>
       </Card>
       <Card className="shadow-lg mt-3 mb-3 border-0 rounded" border="0">
-      <Card.Body style={{ height:'30vh', width:'40vw'}}>
+      <Card.Body id="custom-login" style={{ height:'30vh', width:'40vw'}}>
       <Form onSubmit={async (event) => { event.preventDefault(); await login(event.target.username.value, event.target.password.value);}}>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>

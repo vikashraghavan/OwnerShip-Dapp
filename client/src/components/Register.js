@@ -17,9 +17,10 @@ class Register extends Component {
   makeRegister = async (username, password, confirmpassword) => {
 
     if (password === confirmpassword) {
-        this.props.createUser(username, password).then(await this.props.history.push('/'));
+      this.setState({rshow: false});
+      this.props.createUser(username, password).then(await this.props.history.push('/'));
     } else {
-      this.setState({ rshow: true });
+      this.setState({rshow: true});
       console.log('tst');
     }
 
@@ -27,16 +28,16 @@ class Register extends Component {
 
   render() {
     return (
-      <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}} >
+      <div id="register" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}} >
       <Card id="title" style={{  width:'100%'}} border="dark" className="shadow-lg mt-3 mb-3 border-0 rounded">
         <Card.Body style={{ 'padding':'2.25vh'}}>
           <Card.Title className="my-0" >Register </Card.Title>
         </Card.Body>
       </Card>
       <Card className="shadow-lg mt-3 mb-3 border-0 rounded" border="0">
-      <Card.Body style={{ height:'40vh', width:'40vw'}}>
-      <Form onSubmit={async () => {
-        
+      <Card.Body id="custom-register" style={{ height:'40vh', width:'40vw'}}>
+      <Form onSubmit={async (e) => {
+        e.preventDefault();
         await this.makeRegister(this.username.value, this.password.value, this.confirmpassword.value);}}
       >
       <Form.Group controlId="formBasicEmail">

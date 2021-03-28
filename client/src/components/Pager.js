@@ -23,7 +23,7 @@ const Pager = ({ posts, loading, postsPerPage }) => {
                 <Col >
                   <Card.Text  style={{ 'fontSize':'2.5vmin'}} className="my-0"> {post.title} </Card.Text>
                 </Col>
-                <Col xs={8}>
+                <Col id="description" xs={8}>
                   <Card.Text>
                   <Truncate lines={2} style={{ 'fontSize':'1.5vh', 'marginBottom':'0vh'}} ellipsis={<span>...</span>}>
                   {post.description}
@@ -46,7 +46,7 @@ const Pager = ({ posts, loading, postsPerPage }) => {
               <Col >
                 <Card.Text  style={{ 'fontSize':'2.5vh'}} className="my-0"> {post.title} </Card.Text>
               </Col>
-              <Col xs={8}>
+              <Col className="custom-description" xs={8}>
                 <Card.Text>
                 <Truncate lines={2} style={{ 'fontSize':'1.5vh', 'marginBottom':'0vh'}} ellipsis={<span>...</span>}>
                 {post.description}

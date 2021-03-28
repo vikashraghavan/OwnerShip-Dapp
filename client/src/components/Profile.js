@@ -66,10 +66,10 @@ const Profile = ({ web3, userAllContent, userProjectContent, userArticleContent,
     <Card id="title" style={{ height:'21%', width:'85%'}} border="dark" className="shadow-lg mt-3 mb-3 border-0 rounded">
       <Card.Body style={{ 'padding':'2.25vh'}}>
         <Row style={{ height:'100%', width:'100%', margin:'0'}}>
-          <Col style={{ 'border-right': '1px solid black'}}>
+          <Col style={{ 'borderRight': '1px solid black'}}>
             <Card.Title style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}> {username} </Card.Title>
           </Col>
-          <Col style={{ 'border-right': '1px solid black'}}>
+          <Col style={{ 'borderRight': '1px solid black'}}>
           <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)'}}>
           <Card.Text className="mb-2">Projects : {userProjectContent.length}</Card.Text>
           <Card.Text className="mb-2">Papers   : {userPaperContent.length}</Card.Text>
@@ -115,7 +115,7 @@ const Profile = ({ web3, userAllContent, userProjectContent, userArticleContent,
         <Pager posts={currentPosts} postsPerPage={postsPerPage} />
       </Card.Body>
       <Card.Footer style={{ height:'65px', backgroundColor: '#faf9f9', 'borderTop':'0px' }} className="position-static">
-<Link style={{ 'textDecoration':'none', 'color': 'black'}} to="/"><span className="float-right my-2 ml-2" inline><ArrowLeft width="25" height="25" className="float-left mr-2"/>Back</span></Link>
+<Link style={{ 'textDecoration':'none', 'color': 'black'}} to="/"><span className="float-right my-2 ml-2"><ArrowLeft width="25" height="25" className="float-left mr-2"/>Back</span></Link>
         <Paginate
           postsPerPage={postsPerPage}
           totalPosts={posts.length}
