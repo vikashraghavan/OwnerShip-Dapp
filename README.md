@@ -10,7 +10,7 @@ IPMS (Intellectual Property Management System) Dapp to store Intellectual Proper
 - Minimalistic User Interface
 - Completely Decentralised
 
-Modifications and features to be [added](https://github.com/vikashraghavan/OwnerShip-Dapp/edit/main/ExpectedFeatures.md)
+Check out the modifications and features to be [added](https://github.com/vikashraghavan/OwnerShip-Dapp/blob/main/ExpectedFeatures.md)
 
 ## Steps to run
 
