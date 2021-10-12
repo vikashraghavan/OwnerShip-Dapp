@@ -12,7 +12,7 @@ IPMS (Intellectual Property Management System) Dapp to store Intellectual Proper
 
 Modifications and features to be [added](https://github.com/vikashraghavan/OwnerShip-Dapp/edit/main/ExpectedFeatures.md)
 
-## Steps to run the project
+## Steps to run
 
 #### Prerequisites: 
 NPM and Ganache (Suggested to try it on the test net)
@@ -20,6 +20,10 @@ NPM and Ganache (Suggested to try it on the test net)
 - Clone this repo
 ```
 git clone https://github.com/vikashraghavan/OwnerShip-Dapp
+```
+- Modify the Ganache port number at truffle-config.js and then run
+```
+truffle migrate
 ```
 - Modify the Ganache address at client/src/getWeb3.js
 - Get into the client Directory and run
