@@ -48,22 +48,22 @@ contract SimpleStorage {
 
     // Set delete status as true to make it visible only to the author
     
-    function deleteContent(uint256 _id) public payable onlySeller(_id) {
+    function deleteContent(uint256 _id) public payable onlyAuthor(_id) {
         content[_id].isRemoved = true;
     }
 
     // Set delete status as false to make it publicly visible 
     
-    function restoreContent(uint256 _id) public payable onlySeller(_id) {
+    function restoreContent(uint256 _id) public payable onlyAuthor(_id) {
         content[_id].isRemoved = false;
     }
 
     //Modifier to identify Author.
      
-    modifier onlySeller(uint256 _id) {
+    modifier onlyAuthor(uint256 _id) {
         require(
             msg.sender == content[_id].authorAddress,
-            "Only seller can call this."
+            "Only author can call this."
         );
         _;
     }
