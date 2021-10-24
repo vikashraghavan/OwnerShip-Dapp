@@ -10,32 +10,34 @@ contract SimpleStorage {
         owner = msg.sender;
     }
 
+    // Parameters associated with the posted content
+    
     struct Content {
         uint256 id;
-        string contentType;
-        string contentHash;
+        string contentType;   // Project, Paper or Article
+        string contentHash;   // Content's IPFS hash 
         string description;
         string title;
         string author;
         address authorAddress;
-        bool isRemoved;
-
-        //////                ////////
-        //should add author _address//
-        //////                ////////
+        bool isRemoved;   // Handle to check content's delete status. If deleted, it will be visible only to the author.
     }
 
+    // Parameters associated with an individual author
+    
     struct Creator {
         uint256 id;
         string creatorName;
         address creatorAddress;
         uint256[] creatorContentId;
-        bool isRegistered;
+        bool isRegistered;   // handle to check for registered addresses
     }
 
     mapping(uint256 => Content) public content;
     mapping(address => Creator) public creator;
 
+    // Funtion to fetch individual author's details
+    
     function getCreator(address _address) public view returns (Creator memory) {
         return creator[_address];
     }
@@ -44,17 +46,20 @@ contract SimpleStorage {
         return content[_id];
     }
 
+    // Set delete status as true to make it visible only to the author
+    
     function deleteContent(uint256 _id) public payable onlySeller(_id) {
         content[_id].isRemoved = true;
     }
 
+    // Set delete status as false to make it publicly visible 
+    
     function restoreContent(uint256 _id) public payable onlySeller(_id) {
         content[_id].isRemoved = false;
     }
 
-    /**
-        Modifier to identify Seller / Author.
-     */
+    //Modifier to identify Author.
+     
     modifier onlySeller(uint256 _id) {
         require(
             msg.sender == content[_id].authorAddress,
@@ -63,6 +68,8 @@ contract SimpleStorage {
         _;
     }
 
+    // Adds content to the mapping and updates author's details
+    
     function addContent(
         string memory _name,
         string memory _contentType,
@@ -71,6 +78,9 @@ contract SimpleStorage {
         string memory _title
     ) public {
         contentCount++;
+        
+        // Checks if the content is created by a new author
+        
         if (creator[msg.sender].isRegistered) {
             creator[msg.sender].creatorContentId.push(contentCount);
             content[contentCount] = Content(
