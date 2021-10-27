@@ -24,24 +24,27 @@ const Profile = ({ web3, userAllContent, userProjectContent, userArticleContent,
     //includeScore: true
   });
 
+  const contentMapping = {
+
+    'all': userAllContent,
+    'project': userProjectContent,
+    'paper': userPaperContent,
+    'article':userArticleContent
+
+  }
+
   const onSearch = async ({ currentTarget }) => {
     //updateQuery(currentTarget.value);
     //console.log(currentTarget.value);
-    if (currentTarget.value === '') {
-      if (active === 'all') {
-        await setPosts(userAllContent);
-        return;
-      } else if (active === 'project') {
-        await setPosts(userProjectContent);
-        return;
-      } else if (active === 'paper') {
-        await setPosts(userPaperContent);
-        return;
-      }else if (active === 'article') {
-        await setPosts(userArticleContent);
-        return;
-      }
+
+    if(currentTarget.value === '' && Object.keys(contentMapping).includes(active) ){
+
+      await setPosts(contentMapping[active]);
+      return;
+
     }
+
+
     const results = await fuse.search(currentTarget.value);
     //console.log(results);
     await setPosts(results.map(r => r.item));
