@@ -25,7 +25,7 @@ git clone https://github.com/vikashraghavan/OwnerShip-Dapp
 ```
 truffle migrate
 ```
-- Modify the Ganache address at client/src/getWeb3.js
+- Modify the Ganache address at client/src/App.js under loadWeb3 function
 - Get into the client Directory and run
 ```
 npm install

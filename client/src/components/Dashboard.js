@@ -20,24 +20,26 @@ const Dashboard = ({username, allContent, projectContent, articleContent, paperC
     //includeScore: true
   });
 
+  const contentMapping = {
+
+    'All': allContent,
+    'Project': projectContent,
+    'Paper': paperContent,
+    'Article':articleContent
+
+  }
+
   const onSearch = async ({ currentTarget }) => {
     //updateQuery(currentTarget.value);
     //console.log(currentTarget.value);
-    if (currentTarget.value === '') {
-      if (active === 'All') {
-        await setPosts(allContent);
-        return;
-      } else if (active === 'Project') {
-        await setPosts(projectContent);
-        return;
-      } else if (active === 'Paper') {
-        await setPosts(paperContent);
-        return;
-      }else if (active === 'Article') {
-        await setPosts(articleContent);
-        return;
-      }
+
+    if(currentTarget.value === '' && Object.keys(contentMapping).includes(active) ){
+
+      await setPosts(contentMapping[active]);
+      return;
+
     }
+
     const results = await fuse.search(currentTarget.value);
     //console.log(results);
     await setPosts(results.map(r => r.item));
