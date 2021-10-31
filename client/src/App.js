@@ -124,16 +124,11 @@ class App extends Component {
     const userAccount = await localStorage.getItem( 'userAccount' ) || 1;
     const isLogged = await localStorage.getItem( 'isLogged' ) || 1;
 
-    if(isLogged === 'true') {
-      await this.setState({username: username,
-      userAccount: userAccount,
-      isLogged: true});
-    } else {
-      await this.setState({username: null,
-      userAccount: null,
-      isLogged: false});
-    }
+    await this.setState({username: isLogged ? username : null,
+      userAccount: isLogged ? userAccount : null,
+      isLogged:isLogged });
 
+  
     this.setState({ loading: false });
 
   };
